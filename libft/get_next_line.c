@@ -6,7 +6,7 @@
 /*   By: seunlee2 <seunlee2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 17:05:31 by seunlee2          #+#    #+#             */
-/*   Updated: 2023/08/07 18:18:03 by seunlee2         ###   ########.fr       */
+/*   Updated: 2023/08/11 20:28:24 by seunlee2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char	*ft_set_buf(char **buf)
 	if (!res)
 		return (NULL);
 	tmp = *buf;
-	*buf = ft_strndup(*buf + idx, ft_strlen(*buf) - idx);
+	*buf = ft_strndup(*buf + idx, ft_len(*buf) - idx);
 	free(tmp);
 	return (res);
 }

@@ -6,13 +6,13 @@
 /*   By: seunlee2 <seunlee2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 16:32:05 by seunlee2          #+#    #+#             */
-/*   Updated: 2023/04/19 16:15:52 by seunlee2         ###   ########.fr       */
+/*   Updated: 2023/08/11 20:28:30 by seunlee2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *s)
+size_t	ft_len(const char *s)
 {
 	size_t	len;
 
@@ -69,8 +69,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	s2_len;
 	char	*s;
 
-	s1_len = ft_strlen(s1);
-	s2_len = ft_strlen(s2);
+	s1_len = ft_len(s1);
+	s2_len = ft_len(s2);
 	if (!s1 && !s2)
 		return (ft_strndup("", 0));
 	else if (!s1 || s1_len <= 0)
