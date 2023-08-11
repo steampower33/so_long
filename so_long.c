@@ -6,7 +6,7 @@
 /*   By: seunlee2 <seunlee2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:28:58 by seunlee2          #+#    #+#             */
-/*   Updated: 2023/08/11 20:29:34 by seunlee2         ###   ########.fr       */
+/*   Updated: 2023/08/11 20:39:35 by seunlee2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,7 @@ int	ft_is_rect(int fd)
 	char	*line;
 
 	line = get_next_line(fd);
-	while (!line)
-	{
-		printf("%s\n", line);
-		free(line);
-		line = get_next_line(fd);
-	}
+	printf("%s\n", line);
 	return (1);
 }
 
