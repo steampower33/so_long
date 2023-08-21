@@ -6,7 +6,7 @@
 #    By: seunlee2 <seunlee2@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/29 17:31:22 by seunlee2          #+#    #+#              #
-#    Updated: 2023/08/11 19:38:27 by seunlee2         ###   ########.fr        #
+#    Updated: 2023/08/21 19:20:00 by seunlee2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,23 +15,27 @@ SRCS = so_long.c
 OBJS = $(SRCS:.c=.o)
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-LIBFT_PATH = libft
+LIBFT = libft
+MLX = mlx
 
 %.o: %.c
-	$(CC) $(CFLAGS) -I $(LIBFT_PATH) -o $@ -c $<
+	$(CC) $(CFLAGS) -I $(LIBFT) -o $@ -c $< 
 
 $(NAME): $(OBJS)
-	$(MAKE) -C $(LIBFT_PATH)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT_PATH)/libft.a -o $(NAME)
+	$(MAKE) -C $(LIBFT)
+	$(MAKE) -C $(MLX)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT)/libft.a -o $(NAME) -L./mlx $(MLX)/libmlx.a -framework OpenGL -framework Appkit
 
 all: $(NAME)
 
 clean:
-	$(MAKE) -C $(LIBFT_PATH) clean
+	$(MAKE) -C $(LIBFT) clean
+	$(MAKE) -C $(MLX) clean
 	rm -f $(OBJS)
 
 fclean: clean
-	$(MAKE) -C $(LIBFT_PATH) fclean
+	$(MAKE) -C $(LIBFT) fclean
+	$(MAKE) -C $(MLX) fclean
 	rm -f $(NAME)
 
 re:

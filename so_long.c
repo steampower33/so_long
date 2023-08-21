@@ -6,7 +6,7 @@
 /*   By: seunlee2 <seunlee2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:28:58 by seunlee2          #+#    #+#             */
-/*   Updated: 2023/08/11 20:43:12 by seunlee2         ###   ########.fr       */
+/*   Updated: 2023/08/21 19:19:19 by seunlee2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,14 @@ int	ft_map_chk(char **argv)
 
 int	main(int argc, char **argv)
 {
+	void	*mlx_ptr;
+	void	*win_ptr;
+
 	if (argc != 2)
 		ft_error("Arguments Error", 1);
 	if (!ft_map_chk(argv))
 		ft_error("Map Error", 1);
+	mlx_ptr = mlx_init();
+	win_ptr = mlx_new_window(mlx_ptr, 500, 500, "mlx");
+	mlx_loop(win_ptr);
 }

@@ -6,7 +6,7 @@
 /*   By: seunlee2 <seunlee2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:28:54 by seunlee2          #+#    #+#             */
-/*   Updated: 2023/08/11 19:37:35 by seunlee2         ###   ########.fr       */
+/*   Updated: 2023/08/21 19:14:28 by seunlee2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define SO_LONG_H
 
 # include "libft.h"
+# include "./mlx/mlx.h"
 # include <fcntl.h>
 # include <stdio.h>
 
