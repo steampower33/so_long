@@ -6,7 +6,7 @@
 /*   By: seunlee2 <seunlee2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 17:05:31 by seunlee2          #+#    #+#             */
-/*   Updated: 2023/08/11 20:38:41 by seunlee2         ###   ########.fr       */
+/*   Updated: 2023/08/23 20:08:33 by seunlee2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*ft_readline(int fd, char *buf)
 		}
 		readline[size] = '\0';
 		tmp = res;
-		res = ft_strjoin(res, readline);
+		res = ft_strjoin_gnl(res, readline);
 		free(tmp);
 		if (!res)
 			return (NULL);

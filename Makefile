@@ -6,7 +6,7 @@
 #    By: seunlee2 <seunlee2@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/29 17:31:22 by seunlee2          #+#    #+#              #
-#    Updated: 2023/08/21 19:20:00 by seunlee2         ###   ########.fr        #
+#    Updated: 2023/08/23 20:07:00 by seunlee2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,12 +19,12 @@ LIBFT = libft
 MLX = mlx
 
 %.o: %.c
-	$(CC) $(CFLAGS) -I $(LIBFT) -o $@ -c $< 
+	$(CC) $(CFLAGS) -o $@ -c $< 
 
 $(NAME): $(OBJS)
 	$(MAKE) -C $(LIBFT)
 	$(MAKE) -C $(MLX)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT)/libft.a -o $(NAME) -L./mlx $(MLX)/libmlx.a -framework OpenGL -framework Appkit
+	$(CC) $(CFLAGS) $(OBJS) -fsanitize=address -o $(NAME) -L./libft $(LIBFT)/libft.a  -L./mlx $(MLX)/libmlx.a -framework OpenGL -framework Appkit
 
 all: $(NAME)
 

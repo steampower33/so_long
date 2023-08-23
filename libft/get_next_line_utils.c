@@ -6,7 +6,7 @@
 /*   By: seunlee2 <seunlee2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 16:32:05 by seunlee2          #+#    #+#             */
-/*   Updated: 2023/08/11 20:28:30 by seunlee2         ###   ########.fr       */
+/*   Updated: 2023/08/23 20:08:59 by seunlee2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ char	*ft_strcat(char *s, const char *s1, const char *s2, size_t s1_len)
 	return (s);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin_gnl(char const *s1, char const *s2)
 {
 	size_t	len;
 	size_t	s1_len;
