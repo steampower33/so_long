@@ -6,7 +6,7 @@
 /*   By: seunlee2 <seunlee2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:28:58 by seunlee2          #+#    #+#             */
-/*   Updated: 2023/08/24 19:40:07 by seunlee2         ###   ########.fr       */
+/*   Updated: 2023/08/24 20:01:17 by seunlee2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ void	ft_set_img(t_game *g)
 
 void	ft_set_img_map(t_game *g, int w, int h)
 {
-	g->c = 1;
-	g->now_c = 0;
 	mlx_put_image_to_window(g->mlx, g->win, g->plain, w * 32, h * 32);
 	if (g->map_line[h * g->width + w] == '1')
 		mlx_put_image_to_window(g->mlx, g->win, g->tree, w * 32, h * 32);

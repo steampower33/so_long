@@ -6,7 +6,7 @@
 /*   By: seunlee2 <seunlee2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:28:54 by seunlee2          #+#    #+#             */
-/*   Updated: 2023/08/24 19:39:46 by seunlee2         ###   ########.fr       */
+/*   Updated: 2023/08/24 20:00:25 by seunlee2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,6 @@ typedef struct s_game
 	void	*plain;
 	void	*cat;
 	void	*cat2;
-	int		x;
-	int		y;
 	int		c;
 	int		now_c;
 }	t_game;
@@ -56,8 +54,7 @@ char	*ft_dup_noline(char *s1);
 char	*ft_join_noline(char *s1, char *s2);
 int		ft_strlen_noline(char *line);
 
-void	param_init(t_game *param);
-int		key_press(t_game *param, int keycode);
+int		key_press(int keycode);
 
 void	ft_set_img(t_game *g);
 void	ft_set_img_map(t_game *g, int w, int h);

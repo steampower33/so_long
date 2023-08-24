@@ -6,7 +6,7 @@
 /*   By: seunlee2 <seunlee2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 17:36:50 by seunlee2          #+#    #+#             */
-/*   Updated: 2023/08/24 18:29:56 by seunlee2         ###   ########.fr       */
+/*   Updated: 2023/08/24 19:50:37 by seunlee2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int	ft_is_rect(int fd, t_game *g)
 			g->map_line = ft_join_noline(g->map_line, line);
 		}
 	}
-	printf("%d %d\n", g->width, g->height);
 	return (1);
 }
 
