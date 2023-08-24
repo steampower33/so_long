@@ -6,7 +6,7 @@
 /*   By: seunlee2 <seunlee2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:28:54 by seunlee2          #+#    #+#             */
-/*   Updated: 2023/08/23 19:49:19 by seunlee2         ###   ########.fr       */
+/*   Updated: 2023/08/24 15:25:33 by seunlee2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,6 @@ typedef struct s_game
 void	ft_error(char *str, int code);
 void	ft_show_map(char *map);
 
+char	*ft_dup_noline(const char *s1);
+char	*ft_join_noline(char const *s1, char const *s2);
 #endif

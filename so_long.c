@@ -6,7 +6,7 @@
 /*   By: seunlee2 <seunlee2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:28:58 by seunlee2          #+#    #+#             */
-/*   Updated: 2023/08/23 20:11:41 by seunlee2         ###   ########.fr       */
+/*   Updated: 2023/08/24 15:41:39 by seunlee2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,24 +26,22 @@ int	ft_is_rect(int fd, t_game *g)
 	line = get_next_line(fd);
 	if (!line)
 		ft_error("map is empty", 1);
-	g->width = ft_strlen(line);
+	g->width = ft_strlen(line) - 1;
 	g->height = 0;
-	g->map_line = ft_strdup(line);
+	g->map_line = ft_dup_noline(line);
 	free(line);
 	while (line)
 	{
 		line = get_next_line(fd);
+		g->height++;
 		if (line)
 		{
-			g->height++;
 			tmp = g->map_line;
-			if (g->map_line[ft_strline(g->map_line) - 1] == '\n')
-				g->map_line = ft_strjoin(g->map_line, line);
+			g->map_line = ft_join_noline(g->map_line, line);
 			free(tmp);
 		}
 		free(line);
 	}
-	printf("%s\n", g->map_line);
 	close(fd);
 	return (1);
 }
