@@ -6,12 +6,13 @@
 #    By: seunlee2 <seunlee2@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/29 17:31:22 by seunlee2          #+#    #+#              #
-#    Updated: 2023/08/24 15:26:38 by seunlee2         ###   ########.fr        #
+#    Updated: 2023/08/24 17:37:21 by seunlee2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
-SRCS = so_long.c ft_dup_noline.c ft_join_noline.c
+SRCS = so_long.c ft_dup_noline.c ft_join_noline.c ft_error.c ft_utils.c \
+		ft_key_param.c ft_map.c
 OBJS = $(SRCS:.c=.o)
 CC = cc
 CFLAGS = -Wall -Wextra -Werror

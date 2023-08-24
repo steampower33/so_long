@@ -6,70 +6,66 @@
 /*   By: seunlee2 <seunlee2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:28:58 by seunlee2          #+#    #+#             */
-/*   Updated: 2023/08/24 15:41:39 by seunlee2         ###   ########.fr       */
+/*   Updated: 2023/08/24 19:40:07 by seunlee2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_error(char *str, int code)
+void	ft_set_img(t_game *g)
 {
-	perror(str);
-	exit(code);
+	int	w;
+	int	h;
+
+	g->tree = mlx_xpm_file_to_image(g->mlx, "./textures/tree.xpm", &w, &h);
+	g->door_o = mlx_xpm_file_to_image(g->mlx, "./textures/door_o.xpm", &w, &h);
+	g->door_x = mlx_xpm_file_to_image(g->mlx, "./textures/door_x.xpm", &w, &h);
+	g->plain = mlx_xpm_file_to_image(g->mlx, "./textures/plain.xpm", &w, &h);
+	g->cat = mlx_xpm_file_to_image(g->mlx, "./textures/cat.xpm", &w, &h);
+	g->cat2 = mlx_xpm_file_to_image(g->mlx, "./textures/cat2.xpm", &w, &h);
 }
 
-int	ft_is_rect(int fd, t_game *g)
+void	ft_set_img_map(t_game *g, int w, int h)
 {
-	char	*line;
-	char	*tmp;
+	g->c = 1;
+	g->now_c = 0;
+	mlx_put_image_to_window(g->mlx, g->win, g->plain, w * 32, h * 32);
+	if (g->map_line[h * g->width + w] == '1')
+		mlx_put_image_to_window(g->mlx, g->win, g->tree, w * 32, h * 32);
+	else if (g->map_line[h * g->width + w] == 'C')
+		mlx_put_image_to_window(g->mlx, g->win, g->cat2, w * 32, h * 32);
+	else if (g->map_line[h * g->width + w] == 'P')
+		mlx_put_image_to_window(g->mlx, g->win, g->cat, w * 32, h * 32);
+	else if (g->map_line[h * g->width + w] == 'E' && g->c == g->now_c)
+		mlx_put_image_to_window(g->mlx, g->win, g->door_o, w * 32, h * 32);
+	else if (g->map_line[h * g->width + w] == 'E')
+		mlx_put_image_to_window(g->mlx, g->win, g->door_x, w * 32, h * 32);
+}
 
-	line = get_next_line(fd);
-	if (!line)
-		ft_error("map is empty", 1);
-	g->width = ft_strlen(line) - 1;
-	g->height = 0;
-	g->map_line = ft_dup_noline(line);
-	free(line);
-	while (line)
+void	ft_set_map(t_game *g)
+{
+	int	w;
+	int	h;
+
+	h = 0;
+	while (h < g->height)
 	{
-		line = get_next_line(fd);
-		g->height++;
-		if (line)
+		w = 0;
+		while (w < g->width)
 		{
-			tmp = g->map_line;
-			g->map_line = ft_join_noline(g->map_line, line);
-			free(tmp);
+			ft_set_img_map(g, w, h);
+			w++;
 		}
-		free(line);
+		h++;
 	}
-	close(fd);
-	return (1);
 }
 
-int	ft_map_chk(char **argv, t_game *g)
+void	ft_game_init(t_game *g)
 {
-	int	fd;
-
-	if (!ft_strnstr(argv[1] + ft_strlen(argv[1]) - 4, ".ber", 4))
-		ft_error("Map Error", 1);
-	fd = open(argv[1], O_RDONLY);
-	if (fd == -1)
-		ft_error("File Open Error", 1);
-	if (!ft_is_rect(fd, g))
-		ft_error("Map Error", 1);
-	close(fd);
-	return (1);
-}
-
-void	ft_show_map(char *map)
-{
-	int		fd;
-
-	if (!ft_strnstr(map + ft_strlen(map) - 4, ".ber", 4))
-		ft_error("Map Error", 1);
-	fd = open(map, O_RDONLY);
-	if (fd == -1)
-		ft_error("File Open Error", 1);
+	g->mlx = mlx_init();
+	ft_set_img(g);
+	g->win = mlx_new_window(g->mlx, g->width * 32, g->height * 32, "so_long");
+	ft_set_map(g);
 }
 
 int	main(int argc, char **argv)
@@ -83,5 +79,8 @@ int	main(int argc, char **argv)
 		ft_error("Arguments Error", 1);
 	if (!ft_map_chk(argv, g))
 		ft_error("Map Error", 1);
-	// ft_show_map(argv[1], g);
+	ft_game_init(g);
+	mlx_hook(g->win, X_EVENT_KEY_RELEASE, 0, &key_press, &g);
+	mlx_loop(g->mlx);
+	return (0);
 }
