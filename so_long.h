@@ -6,7 +6,7 @@
 /*   By: seunlee2 <seunlee2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:28:54 by seunlee2          #+#    #+#             */
-/*   Updated: 2023/08/25 16:48:56 by seunlee2         ###   ########.fr       */
+/*   Updated: 2023/08/25 18:04:45 by seunlee2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ typedef struct s_game
 	void	*cat;
 	void	*cat2;
 	int		c;
+	int		e;
+	int		p;
 	int		now_c;
 	int		x;
 	int		y;
@@ -50,6 +52,7 @@ void	ft_error(char *str, int code);
 
 int		ft_is_rect(int fd, t_game *g);
 int		ft_is_closed(t_game *g);
+int		ft_is_composed(t_game *g);
 int		ft_map_chk(char **argv, t_game *g);
 
 char	*ft_dup_noline(char *s1);

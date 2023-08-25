@@ -6,7 +6,7 @@
 /*   By: seunlee2 <seunlee2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 17:36:50 by seunlee2          #+#    #+#             */
-/*   Updated: 2023/08/25 17:18:20 by seunlee2         ###   ########.fr       */
+/*   Updated: 2023/08/25 18:07:06 by seunlee2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,31 @@ int	ft_is_closed(t_game *g)
 	return (1);
 }
 
+int	ft_is_composed(t_game *g)
+{
+	int	idx;
+	int	line_len;
+
+	g->c = 0;
+	g->e = 0;
+	g->p = 0;
+	line_len = ft_strlen(g->map_line);
+	idx = 0;
+	while (idx < line_len)
+	{
+		if (g->map_line[idx] == 'C')
+			g->c++;
+		if (g->map_line[idx] == 'E')
+			g->e++;
+		if (g->map_line[idx] == 'P')
+			g->p++;
+		if (g->e >= 2 || g->p >= 2)
+			return (0);
+		idx++;
+	}
+	return (1);
+}
+
 int	ft_map_chk(char **argv, t_game *g)
 {
 	int	fd;
@@ -73,6 +98,8 @@ int	ft_map_chk(char **argv, t_game *g)
 		ft_error("Map is not rectangular", 1);
 	if (!ft_is_closed(g))
 		ft_error("Map is not closed by 1", 1);
+	if (!ft_is_composed(g))
+		ft_error("Characters is not enough", 1);
 	close(fd);
 	return (1);
 }

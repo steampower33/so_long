@@ -6,7 +6,7 @@
 /*   By: seunlee2 <seunlee2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:28:58 by seunlee2          #+#    #+#             */
-/*   Updated: 2023/08/25 16:50:58 by seunlee2         ###   ########.fr       */
+/*   Updated: 2023/08/25 17:51:48 by seunlee2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	ft_set_map(t_game *g)
 
 void	ft_game_init(t_game *g)
 {
-	g->c = 0;
+	g->now_c = 0;
 	g->mlx = mlx_init();
 	ft_set_img(g);
 	g->win = mlx_new_window(g->mlx, g->width * 32, g->height * 32, "so_long");
