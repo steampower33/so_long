@@ -6,7 +6,7 @@
 /*   By: seunlee2 <seunlee2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:28:58 by seunlee2          #+#    #+#             */
-/*   Updated: 2023/08/26 17:37:54 by seunlee2         ###   ########.fr       */
+/*   Updated: 2023/08/26 19:11:13 by seunlee2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,7 @@ void	ft_set_img_map(t_game *g, int w, int h)
 {
 	mlx_put_image_to_window(g->mlx, g->win, g->plain, w * 32, h * 32);
 	if (g->map_line[h * g->width + w] == '1')
-	{
 		mlx_put_image_to_window(g->mlx, g->win, g->tree, w * 32, h * 32);
-	}
 	else if (g->map_line[h * g->width + w] == 'C')
 		mlx_put_image_to_window(g->mlx, g->win, g->cat2, w * 32, h * 32);
 	else if (g->map_line[h * g->width + w] == 'P')
@@ -63,6 +61,7 @@ void	ft_set_map(t_game *g)
 void	ft_game_init(t_game *g)
 {
 	g->now_c = 0;
+	g->move_cnt = 0;
 	g->mlx = mlx_init();
 	ft_set_img(g);
 	g->win = mlx_new_window(g->mlx, g->width * 32, g->height * 32, "so_long");

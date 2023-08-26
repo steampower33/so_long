@@ -6,7 +6,7 @@
 /*   By: seunlee2 <seunlee2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 16:12:17 by seunlee2          #+#    #+#             */
-/*   Updated: 2023/08/25 16:44:09 by seunlee2         ###   ########.fr       */
+/*   Updated: 2023/08/26 19:17:04 by seunlee2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,83 @@
 
 void	ft_move_a(t_game *g)
 {
-	g->c = 0;
+	if (g->x - 1 <= 0)
+		return ;
+	if (g->map_line[g->width * g->y + (g->x - 1)] == '1')
+		return ;
+	else
+	{
+		g->map_line[g->width * g->y + g->x] = '0';
+		g->x--;
+		g->map_line[g->width * g->y + g->x] = 'P';
+		g->move_cnt++;
+		ft_printf("%d\n", g->move_cnt);
+		ft_set_map(g);
+	}
 }
 
 void	ft_move_s(t_game *g)
 {
-	g->c = 0;
+	if (g->y + 1 >= g->height)
+		return ;
+	if (g->map_line[g->width * (g->y + 1) + g->x] == '1')
+		return ;
+	else
+	{
+		g->map_line[g->width * g->y + g->x] = '0';
+		g->y++;
+		g->map_line[g->width * g->y + g->x] = 'P';
+		g->move_cnt++;
+		ft_printf("%d\n", g->move_cnt);
+		ft_set_map(g);
+	}
 }
 
 void	ft_move_d(t_game *g)
 {
-	g->c = 0;
+	if (g->x + 1 >= g->width)
+		return ;
+	if (g->map_line[g->width * g->y + (g->x + 1)] == '1')
+		return ;
+	else
+	{
+		g->map_line[g->width * g->y + g->x] = '0';
+		g->x++;
+		g->map_line[g->width * g->y + g->x] = 'P';
+		g->move_cnt++;
+		ft_printf("%d\n", g->move_cnt);
+		ft_set_map(g);
+	}
 }
 
 void	ft_move_w(t_game *g)
 {
-	g->c = 0;
+	if (g->y - 1 <= 0)
+		return ;
+	if (g->map_line[g->width * (g->y - 1) + g->x] == '1')
+		return ;
+	else
+	{
+		g->map_line[g->width * g->y + g->x] = '0';
+		g->y--;
+		g->map_line[g->width * g->y + g->x] = 'P';
+		g->move_cnt++;
+		ft_printf("%d\n", g->move_cnt);
+		ft_set_map(g);
+	}
+}
+
+int	ft_move(int keycode, t_game *g)
+{
+	if (keycode == KEY_A)
+		ft_move_a(g);
+	else if (keycode == KEY_S)
+		ft_move_s(g);
+	else if (keycode == KEY_D)
+		ft_move_d(g);
+	else if (keycode == KEY_W)
+		ft_move_w(g);
+	else if (keycode == KEY_ESC)
+		exit(0);
+	return (0);
 }

@@ -6,18 +6,19 @@
 #    By: seunlee2 <seunlee2@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/29 17:31:22 by seunlee2          #+#    #+#              #
-#    Updated: 2023/08/25 16:13:02 by seunlee2         ###   ########.fr        #
+#    Updated: 2023/08/26 19:12:30 by seunlee2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 SRCS = so_long.c ft_dup_noline.c ft_join_noline.c ft_error.c ft_utils.c \
-		ft_key.c ft_map.c ft_move.c
+		ft_map.c ft_move.c
 OBJS = $(SRCS:.c=.o)
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address
 LIBFT = libft
 MLX = mlx
+PRINTF = ft_printf
 
 %.o: %.c
 	$(CC) $(CFLAGS) -o $@ -c $< 
@@ -25,18 +26,23 @@ MLX = mlx
 $(NAME): $(OBJS)
 	$(MAKE) -C $(LIBFT)
 	$(MAKE) -C $(MLX)
-	$(CC) $(CFLAGS) $(OBJS) -fsanitize=address -o $(NAME) -L./libft $(LIBFT)/libft.a  -L./mlx $(MLX)/libmlx.a -framework OpenGL -framework Appkit
+	$(MAKE) -C $(PRINTF)
+	$(CC) $(CFLAGS) $(OBJS) -fsanitize=address -o $(NAME) \
+		-L./libft $(LIBFT)/libft.a \
+		-L./mlx $(MLX)/libmlx.a -framework OpenGL -framework Appkit \
+		-L./ft_printf $(PRINTF)/libftprintf.a
 
 all: $(NAME)
 
 clean:
 	$(MAKE) -C $(LIBFT) clean
 	$(MAKE) -C $(MLX) clean
+	$(MAKE) -C $(PRINTF) clean
 	rm -f $(OBJS)
 
 fclean: clean
 	$(MAKE) -C $(LIBFT) fclean
-	$(MAKE) -C $(MLX) fclean
+	$(MAKE) -C $(PRINTF) fclean
 	rm -f $(NAME)
 
 re:

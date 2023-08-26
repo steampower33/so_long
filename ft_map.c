@@ -6,7 +6,7 @@
 /*   By: seunlee2 <seunlee2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 17:36:50 by seunlee2          #+#    #+#             */
-/*   Updated: 2023/08/26 17:52:32 by seunlee2         ###   ########.fr       */
+/*   Updated: 2023/08/26 18:32:43 by seunlee2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,11 @@ int	ft_is_composed(t_game *g)
 	}
 	return (1);
 }
+
+// int	ft_is_valid_path(t_game *g)
+// {
+	
+// }
 
 int	ft_map_chk(char **argv, t_game *g)
 {
