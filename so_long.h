@@ -6,7 +6,7 @@
 /*   By: seunlee2 <seunlee2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:28:54 by seunlee2          #+#    #+#             */
-/*   Updated: 2023/08/25 18:04:45 by seunlee2         ###   ########.fr       */
+/*   Updated: 2023/08/26 17:51:59 by seunlee2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct s_game
 	int		width;
 	int		height;
 	char	*map_line;
+	int		map_len;
 	void	*mlx;
 	void	*win;
 	void	*tree;
@@ -58,6 +59,7 @@ int		ft_map_chk(char **argv, t_game *g);
 char	*ft_dup_noline(char *s1);
 char	*ft_join_noline(char *s1, char *s2);
 int		ft_strlen_noline(char *line);
+int		ft_len(char	*line);
 
 int		ft_move(int keycode, t_game *g);
 

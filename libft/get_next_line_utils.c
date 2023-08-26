@@ -6,13 +6,13 @@
 /*   By: seunlee2 <seunlee2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 16:32:05 by seunlee2          #+#    #+#             */
-/*   Updated: 2023/08/23 20:08:59 by seunlee2         ###   ########.fr       */
+/*   Updated: 2023/08/26 17:45:07 by seunlee2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_len(const char *s)
+size_t	ft_strlen_gnl(const char *s)
 {
 	size_t	len;
 
@@ -69,8 +69,8 @@ char	*ft_strjoin_gnl(char const *s1, char const *s2)
 	size_t	s2_len;
 	char	*s;
 
-	s1_len = ft_len(s1);
-	s2_len = ft_len(s2);
+	s1_len = ft_strlen_gnl(s1);
+	s2_len = ft_strlen_gnl(s2);
 	if (!s1 && !s2)
 		return (ft_strndup("", 0));
 	else if (!s1 || s1_len <= 0)

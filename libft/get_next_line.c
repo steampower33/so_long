@@ -6,7 +6,7 @@
 /*   By: seunlee2 <seunlee2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 17:05:31 by seunlee2          #+#    #+#             */
-/*   Updated: 2023/08/23 20:08:33 by seunlee2         ###   ########.fr       */
+/*   Updated: 2023/08/26 17:45:32 by seunlee2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,15 @@ char	*ft_set_buf(char **buf)
 	if (!res)
 		return (NULL);
 	tmp = *buf;
-	*buf = ft_strndup(*buf + idx, ft_len(*buf) - idx);
+	*buf = ft_strndup(*buf + idx, ft_strlen_gnl(*buf) - idx);
 	free(tmp);
 	return (res);
 }
 
-t_list	*ft_find_fd_node(t_list **fd_list, int fd)
+t_gnl	*ft_find_fd_node(t_gnl **fd_list, int fd)
 {
-	t_list	*fd_node;
-	t_list	*fd_prev;
+	t_gnl	*fd_node;
+	t_gnl	*fd_prev;
 
 	fd_prev = NULL;
 	fd_node = *fd_list;
@@ -73,7 +73,7 @@ t_list	*ft_find_fd_node(t_list **fd_list, int fd)
 		fd_prev = fd_node;
 		fd_node = fd_node->next;
 	}
-	fd_node = (t_list *)malloc(sizeof(t_list));
+	fd_node = (t_gnl *)malloc(sizeof(t_gnl));
 	if (!fd_node)
 		return (NULL);
 	fd_node->fd = fd;
@@ -86,10 +86,10 @@ t_list	*ft_find_fd_node(t_list **fd_list, int fd)
 	return (fd_node);
 }
 
-void	ft_del_fd_node(t_list **fd_list, int fd)
+void	ft_del_fd_node(t_gnl **fd_list, int fd)
 {
-	t_list	*fd_prev;
-	t_list	*fd_node;
+	t_gnl	*fd_prev;
+	t_gnl	*fd_node;
 
 	fd_prev = NULL;
 	fd_node = *fd_list;
@@ -110,8 +110,8 @@ void	ft_del_fd_node(t_list **fd_list, int fd)
 
 char	*get_next_line(int fd)
 {
-	static t_list	*fd_list;
-	t_list			*fd_node;
+	static t_gnl	*fd_list;
+	t_gnl			*fd_node;
 	char			*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
