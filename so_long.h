@@ -6,7 +6,7 @@
 /*   By: seunlee2 <seunlee2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:28:54 by seunlee2          #+#    #+#             */
-/*   Updated: 2023/08/26 19:10:23 by seunlee2         ###   ########.fr       */
+/*   Updated: 2023/08/26 19:53:46 by seunlee2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "./mlx/mlx.h"
 # include "./ft_printf/ft_printf.h"
 # include <fcntl.h>
+# include <stdio.h>
 
 # define X_EVENT_KEY_PRESS			2
 # define X_EVENT_KEY_RELEASE		3
@@ -42,12 +43,14 @@ typedef struct s_game
 	void	*cat;
 	void	*cat2;
 	int		c;
-	int		e;
-	int		p;
 	int		now_c;
+	int		e;
+	int		now_e;
+	int		p;
 	int		x;
 	int		y;
 	int		move_cnt;
+	int		shortest_move;
 }	t_game;
 
 void	ft_error(char *str, int code);

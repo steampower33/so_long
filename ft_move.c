@@ -6,7 +6,7 @@
 /*   By: seunlee2 <seunlee2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 16:12:17 by seunlee2          #+#    #+#             */
-/*   Updated: 2023/08/26 19:17:04 by seunlee2         ###   ########.fr       */
+/*   Updated: 2023/08/26 19:54:10 by seunlee2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,14 @@ void	ft_move_a(t_game *g)
 		return ;
 	if (g->map_line[g->width * g->y + (g->x - 1)] == '1')
 		return ;
+	if (g->map_line[g->width * g->y + (g->x - 1)] == 'E' && g->c != g->now_c)
+		return ;
 	else
 	{
+		if (g->map_line[g->width * g->y + (g->x - 1)] == 'C')
+			g->now_c++;
+		if (g->map_line[g->width * g->y + (g->x - 1)] == 'E')
+			g->now_e++;
 		g->map_line[g->width * g->y + g->x] = '0';
 		g->x--;
 		g->map_line[g->width * g->y + g->x] = 'P';
@@ -35,8 +41,14 @@ void	ft_move_s(t_game *g)
 		return ;
 	if (g->map_line[g->width * (g->y + 1) + g->x] == '1')
 		return ;
+	if (g->map_line[g->width * (g->y + 1) + g->x] == 'E' && g->c != g->now_c)
+		return ;
 	else
 	{
+		if (g->map_line[g->width * (g->y + 1) + g->x] == 'C')
+			g->now_c++;
+		if (g->map_line[g->width * (g->y + 1) + g->x] == 'E')
+			g->now_e++;
 		g->map_line[g->width * g->y + g->x] = '0';
 		g->y++;
 		g->map_line[g->width * g->y + g->x] = 'P';
@@ -52,8 +64,14 @@ void	ft_move_d(t_game *g)
 		return ;
 	if (g->map_line[g->width * g->y + (g->x + 1)] == '1')
 		return ;
+	if (g->map_line[g->width * g->y + (g->x + 1)] == 'E' && g->c != g->now_c)
+		return ;
 	else
 	{
+		if (g->map_line[g->width * g->y + (g->x + 1)] == 'C')
+			g->now_c++;
+		if (g->map_line[g->width * g->y + (g->x + 1)] == 'E')
+			g->now_e++;
 		g->map_line[g->width * g->y + g->x] = '0';
 		g->x++;
 		g->map_line[g->width * g->y + g->x] = 'P';
@@ -69,8 +87,14 @@ void	ft_move_w(t_game *g)
 		return ;
 	if (g->map_line[g->width * (g->y - 1) + g->x] == '1')
 		return ;
+	if (g->map_line[g->width * (g->y - 1) + g->x] == 'E' && g->c != g->now_c)
+		return ;
 	else
 	{
+		if (g->map_line[g->width * (g->y - 1) + g->x] == 'C')
+			g->now_c++;
+		if (g->map_line[g->width * (g->y - 1) + g->x] == 'E')
+			g->now_e++;
 		g->map_line[g->width * g->y + g->x] = '0';
 		g->y--;
 		g->map_line[g->width * g->y + g->x] = 'P';
@@ -92,5 +116,11 @@ int	ft_move(int keycode, t_game *g)
 		ft_move_w(g);
 	else if (keycode == KEY_ESC)
 		exit(0);
+	if (g->now_e == 1)
+	{
+		ft_printf("Your move is %d\n", g->move_cnt);
+		ft_printf("Shortest move is \n");
+		exit(0);
+	}
 	return (0);
 }

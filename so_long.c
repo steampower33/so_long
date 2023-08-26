@@ -6,7 +6,7 @@
 /*   By: seunlee2 <seunlee2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:28:58 by seunlee2          #+#    #+#             */
-/*   Updated: 2023/08/26 19:11:13 by seunlee2         ###   ########.fr       */
+/*   Updated: 2023/08/26 19:53:36 by seunlee2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	ft_set_img_map(t_game *g, int w, int h)
 		mlx_put_image_to_window(g->mlx, g->win, g->cat2, w * 32, h * 32);
 	else if (g->map_line[h * g->width + w] == 'P')
 		mlx_put_image_to_window(g->mlx, g->win, g->cat, w * 32, h * 32);
-	else if (g->map_line[h * g->width + w] == 'E' && g->c == g->now_c)
+	else if (g->map_line[h * g->width + w] == 'E' && (g->c == g->now_c))
 		mlx_put_image_to_window(g->mlx, g->win, g->door_o, w * 32, h * 32);
 	else if (g->map_line[h * g->width + w] == 'E')
 		mlx_put_image_to_window(g->mlx, g->win, g->door_x, w * 32, h * 32);
@@ -62,6 +62,7 @@ void	ft_game_init(t_game *g)
 {
 	g->now_c = 0;
 	g->move_cnt = 0;
+	g->now_e = 0;
 	g->mlx = mlx_init();
 	ft_set_img(g);
 	g->win = mlx_new_window(g->mlx, g->width * 32, g->height * 32, "so_long");
