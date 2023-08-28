@@ -6,7 +6,7 @@
 /*   By: seunlee2 <seunlee2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:28:54 by seunlee2          #+#    #+#             */
-/*   Updated: 2023/08/28 12:27:51 by seunlee2         ###   ########.fr       */
+/*   Updated: 2023/08/28 13:38:35 by seunlee2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include <fcntl.h>
 # include <stdio.h>
 
-# define X_EVENT_KEY_PRESS			2
-# define X_EVENT_KEY_RELEASE		3
+# define KEY_PRESS		2
+# define KEY_EXPOSE		17
 
 # define KEY_ESC		53
 # define KEY_W			13
@@ -44,8 +44,10 @@ typedef struct s_game
 	void	*cat2;
 	int		c;
 	int		now_c;
+	int		avail_c;
 	int		e;
 	int		now_e;
+	int		avail_e;
 	int		p;
 	int		x;
 	int		y;
@@ -54,6 +56,9 @@ typedef struct s_game
 }	t_game;
 
 void	ft_error(char *str, int code);
+
+void	ft_dfs(int x, int y, char *map, t_game *g);
+int		ft_is_valid_path(t_game *g);
 
 int		ft_is_rect(int fd, t_game *g);
 int		ft_is_closed(t_game *g);
@@ -68,7 +73,9 @@ int		ft_len(char	*line);
 void	ft_set_img(t_game *g);
 void	ft_set_img_map(t_game *g, int w, int h);
 void	ft_set_map(t_game *g);
+
 void	ft_game_init(t_game *g);
+int		ft_click_x(t_game *g);
 
 void	ft_move_a(t_game *g);
 void	ft_move_s(t_game *g);

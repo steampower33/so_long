@@ -6,13 +6,13 @@
 #    By: seunlee2 <seunlee2@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/29 17:31:22 by seunlee2          #+#    #+#              #
-#    Updated: 2023/08/28 12:28:17 by seunlee2         ###   ########.fr        #
+#    Updated: 2023/08/28 13:28:20 by seunlee2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 SRCS = so_long.c ft_dup_noline.c ft_join_noline.c ft_error.c ft_utils.c \
-		ft_map.c ft_move.c
+		ft_map.c ft_move.c ft_set_map.c ft_is_valid_path.c
 OBJS = $(SRCS:.c=.o)
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -fsanitize=address

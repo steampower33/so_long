@@ -6,7 +6,7 @@
 /*   By: seunlee2 <seunlee2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 16:12:17 by seunlee2          #+#    #+#             */
-/*   Updated: 2023/08/26 19:54:10 by seunlee2         ###   ########.fr       */
+/*   Updated: 2023/08/28 13:15:26 by seunlee2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,6 @@ int	ft_move(int keycode, t_game *g)
 	if (g->now_e == 1)
 	{
 		ft_printf("Your move is %d\n", g->move_cnt);
-		ft_printf("Shortest move is \n");
 		exit(0);
 	}
 	return (0);

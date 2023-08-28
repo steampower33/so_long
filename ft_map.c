@@ -6,7 +6,7 @@
 /*   By: seunlee2 <seunlee2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 17:36:50 by seunlee2          #+#    #+#             */
-/*   Updated: 2023/08/26 18:32:43 by seunlee2         ###   ########.fr       */
+/*   Updated: 2023/08/28 13:28:07 by seunlee2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,15 +86,12 @@ int	ft_is_composed(t_game *g)
 	return (1);
 }
 
-// int	ft_is_valid_path(t_game *g)
-// {
-	
-// }
-
 int	ft_map_chk(char **argv, t_game *g)
 {
 	int	fd;
 
+	g->avail_c = 0;
+	g->avail_e = 0;
 	if (!ft_strnstr(argv[1] + ft_strlen(argv[1]) - 4, ".ber", 4))
 		ft_error("Map Error", 1);
 	fd = open(argv[1], O_RDONLY);
@@ -102,10 +99,12 @@ int	ft_map_chk(char **argv, t_game *g)
 		ft_error("File Open Error", 1);
 	if (!ft_is_rect(fd, g))
 		ft_error("Map is not rectangular", 1);
+	close(fd);
 	if (!ft_is_closed(g))
 		ft_error("Map is not closed by 1", 1);
 	if (!ft_is_composed(g))
 		ft_error("Characters is not enough", 1);
-	close(fd);
+	if (!ft_is_valid_path(g))
+		ft_error("Map has not valid path", 1);
 	return (1);
 }
