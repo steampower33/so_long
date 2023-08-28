@@ -5,44 +5,29 @@
 #                                                     +:+ +:+         +:+      #
 #    By: seunlee2 <seunlee2@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/06/29 17:31:22 by seunlee2          #+#    #+#              #
-#    Updated: 2023/08/28 12:28:17 by seunlee2         ###   ########.fr        #
+#    Created: 2023/03/27 17:02:34 by seunlee2          #+#    #+#              #
+#    Updated: 2023/08/28 12:24:20 by seunlee2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = so_long
-SRCS = so_long.c ft_dup_noline.c ft_join_noline.c ft_error.c ft_utils.c \
-		ft_map.c ft_move.c
-OBJS = $(SRCS:.c=.o)
+NAME = libftprintf.a
+SRCS = ft_printf.c ft_printf_util.c ft_putnbr.c
+OBJECTS = $(SRCS:.c=.o)
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address
-LIBFT = libft
-MLX = mlx
-PRINTF = printf
+CFLAGS = -Wall -Wextra -Werror
 
 %.o: %.c
-	$(CC) $(CFLAGS) -o $@ -c $< 
+	$(CC) $(CFLAGS) -o $@ -c $<
 
-$(NAME): $(OBJS)
-	$(MAKE) -C $(LIBFT)
-	$(MAKE) -C $(MLX)
-	$(MAKE) -C $(PRINTF)
-	$(CC) $(CFLAGS) $(OBJS) -fsanitize=address -o $(NAME) \
-		-L./libft $(LIBFT)/libft.a \
-		-L./mlx $(MLX)/libmlx.a -framework OpenGL -framework Appkit \
-		-L./printf $(PRINTF)/libftprintf.a
+$(NAME): $(OBJECTS)
+	ar -rcs $@ $^
 
 all: $(NAME)
 
-clean:
-	$(MAKE) -C $(LIBFT) clean
-	$(MAKE) -C $(MLX) clean
-	$(MAKE) -C $(PRINTF) clean
-	rm -f $(OBJS)
+clean: 
+	rm -f $(OBJECTS)
 
 fclean: clean
-	$(MAKE) -C $(LIBFT) fclean
-	$(MAKE) -C $(PRINTF) fclean
 	rm -f $(NAME)
 
 re:

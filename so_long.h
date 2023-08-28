@@ -6,7 +6,7 @@
 /*   By: seunlee2 <seunlee2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:28:54 by seunlee2          #+#    #+#             */
-/*   Updated: 2023/08/26 19:53:46 by seunlee2         ###   ########.fr       */
+/*   Updated: 2023/08/28 12:27:51 by seunlee2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "./libft/libft.h"
 # include "./mlx/mlx.h"
-# include "./ft_printf/ft_printf.h"
+# include "./printf/ft_printf.h"
 # include <fcntl.h>
 # include <stdio.h>
 
