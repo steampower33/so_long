@@ -6,14 +6,15 @@
 /*   By: seunlee2 <seunlee2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 17:30:01 by seunlee2          #+#    #+#             */
-/*   Updated: 2023/08/24 17:35:01 by seunlee2         ###   ########.fr       */
+/*   Updated: 2023/08/28 13:58:39 by seunlee2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_error(char *str, int code)
+void	ft_error(char *str)
 {
-	perror(str);
-	exit(code);
+	write(2, "Error\n", 6);
+	write(2, str, ft_strlen(str));
+	exit(1);
 }

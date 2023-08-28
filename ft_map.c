@@ -6,7 +6,7 @@
 /*   By: seunlee2 <seunlee2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 17:36:50 by seunlee2          #+#    #+#             */
-/*   Updated: 2023/08/28 13:28:07 by seunlee2         ###   ########.fr       */
+/*   Updated: 2023/08/28 14:00:20 by seunlee2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_is_rect(int fd, t_game *g)
 
 	line = get_next_line(fd);
 	if (!line)
-		ft_error("map is empty", 1);
+		ft_error("map is empty\n");
 	g->width = ft_strlen(line) - 1;
 	g->height = 0;
 	g->map_line = ft_dup_noline(line);
@@ -93,18 +93,18 @@ int	ft_map_chk(char **argv, t_game *g)
 	g->avail_c = 0;
 	g->avail_e = 0;
 	if (!ft_strnstr(argv[1] + ft_strlen(argv[1]) - 4, ".ber", 4))
-		ft_error("Map Error", 1);
+		ft_error("Map Error\n");
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
-		ft_error("File Open Error", 1);
+		ft_error("File Open Error\n");
 	if (!ft_is_rect(fd, g))
-		ft_error("Map is not rectangular", 1);
+		ft_error("Map is not rectangular\n");
 	close(fd);
 	if (!ft_is_closed(g))
-		ft_error("Map is not closed by 1", 1);
+		ft_error("Map is not closed by 1\n");
 	if (!ft_is_composed(g))
-		ft_error("Characters is not enough", 1);
+		ft_error("Characters is not enough\n");
 	if (!ft_is_valid_path(g))
-		ft_error("Map has not valid path", 1);
+		ft_error("Map has not valid path\n");
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: seunlee2 <seunlee2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:28:54 by seunlee2          #+#    #+#             */
-/*   Updated: 2023/08/28 13:38:35 by seunlee2         ###   ########.fr       */
+/*   Updated: 2023/08/28 13:59:07 by seunlee2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ typedef struct s_game
 	int		shortest_move;
 }	t_game;
 
-void	ft_error(char *str, int code);
+void	ft_error(char *str);
 
 void	ft_dfs(int x, int y, char *map, t_game *g);
 int		ft_is_valid_path(t_game *g);
