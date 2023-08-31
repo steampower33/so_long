@@ -6,7 +6,7 @@
 /*   By: seunlee2 <seunlee2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 17:36:50 by seunlee2          #+#    #+#             */
-/*   Updated: 2023/08/28 14:00:20 by seunlee2         ###   ########.fr       */
+/*   Updated: 2023/08/31 19:07:55 by seunlee2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,10 @@ int	ft_is_composed(t_game *g)
 			g->x = idx % g->width;
 			g->y = idx / g->width;
 		}
-		if (g->e >= 2 || g->p >= 2)
-			return (0);
 		idx++;
 	}
+	if (g->c < 1 || g->e != 1 || g->p != 1)
+		return (0);
 	return (1);
 }
 
