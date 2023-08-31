@@ -6,7 +6,7 @@
 /*   By: seunlee2 <seunlee2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:28:58 by seunlee2          #+#    #+#             */
-/*   Updated: 2023/08/28 14:00:50 by seunlee2         ###   ########.fr       */
+/*   Updated: 2023/08/31 15:55:08 by seunlee2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_game_init(t_game *g)
 	ft_set_map(g);
 }
 
-int	ft_click_x(t_game *g)
+int	ft_exit(t_game *g)
 {
 	mlx_destroy_window(g->mlx, g->win);
 	exit(0);
@@ -42,7 +42,7 @@ int	main(int argc, char **argv)
 		ft_error("Map Error\n");
 	ft_game_init(g);
 	mlx_hook(g->win, KEY_PRESS, 0, &ft_move, g);
-	mlx_hook(g->win, KEY_EXPOSE, 0, &ft_click_x, g);
+	mlx_hook(g->win, KEY_EXPOSE, 0, &ft_exit, g);
 	mlx_loop(g->mlx);
 	return (0);
 }

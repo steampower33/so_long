@@ -6,7 +6,7 @@
 /*   By: seunlee2 <seunlee2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 16:12:17 by seunlee2          #+#    #+#             */
-/*   Updated: 2023/08/28 13:54:47 by seunlee2         ###   ########.fr       */
+/*   Updated: 2023/08/31 15:55:24 by seunlee2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ int	ft_move(int keycode, t_game *g)
 	else if (keycode == KEY_W)
 		ft_move_w(g);
 	else if (keycode == KEY_ESC)
-		exit(0);
+		ft_exit(g);
 	if (g->now_e == 1)
 	{
 		ft_printf("Your move is %d\n", g->move_cnt);

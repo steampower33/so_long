@@ -6,7 +6,7 @@
 /*   By: seunlee2 <seunlee2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:28:54 by seunlee2          #+#    #+#             */
-/*   Updated: 2023/08/28 13:59:07 by seunlee2         ###   ########.fr       */
+/*   Updated: 2023/08/31 15:55:30 by seunlee2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	ft_set_img_map(t_game *g, int w, int h);
 void	ft_set_map(t_game *g);
 
 void	ft_game_init(t_game *g);
-int		ft_click_x(t_game *g);
+int		ft_exit(t_game *g);
 
 void	ft_move_a(t_game *g);
 void	ft_move_s(t_game *g);
