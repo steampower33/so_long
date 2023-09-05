@@ -6,7 +6,7 @@
 /*   By: seunlee2 <seunlee2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:28:54 by seunlee2          #+#    #+#             */
-/*   Updated: 2023/08/31 16:31:59 by seunlee2         ###   ########.fr       */
+/*   Updated: 2023/09/05 09:43:11 by seunlee2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ typedef struct s_game
 	int		x;
 	int		y;
 	int		move_cnt;
-	int		shortest_move;
 }	t_game;
 
 void	ft_error(char *str);
